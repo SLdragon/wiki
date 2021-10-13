@@ -1,4 +1,4 @@
-## Collaborating on TeamsFx Project
+# Collaborating on TeamsFx Project
 The previous version of Teams Toolkit is not easy for multiple users to develop the same project due to missing privilege to access Teams APP and AAD APP for another developer. If multiple developers want to share remote resources and work together, they need to manually handle permissions for Teams App and AAD APP which need deep understanding the low-level details about the TeamsFx project.
 
 
@@ -7,7 +7,23 @@ Latest version of Teams Toolkit now natively support add other collaborators for
 
 ## Collaborating - Use VSCode
 
-### Creator
+### Usage
+- To use collaboration feature, you need to **login M365 and Azure account** and your **TeamsFx project should be provisioned first**
+
+- In the Teams Toolkit panel, click Environment, and expand an environment name, there will be a Collaborators node
+
+  ![collaborators node](./collaborator-node.png)
+
+
+- Click grant permission button on the right side of Collaborators node, then you can add another M365 account email address as collaborator
+
+  ![collaborators node](./input-collaborator-email.png)
+
+- Now collaborator with the added account can develop, provision and deploy the project
+
+
+### E2E Work Flow in VSCode
+#### Creator
 - Open VSCode, create a new TeamsFx Tab project (You can also select bot), and the hosting type select Azure
 
 - Login M365 account and Azure account
@@ -22,7 +38,7 @@ Latest version of Teams Toolkit now natively support add other collaborators for
 
 - Push your project to GitHub
 
-### Collaborator
+#### Collaborator
 - Clone the project from GitHub
 -	Login M365 account use collaborator’s account
 -	Login Azure account which has contributor permission for all the Azure resources
@@ -73,3 +89,5 @@ teamsfx permission status --env dev
 teamsfx permission status --env dev --list-all-collaborators
 ```
 
+## Limitations of collaboration feature
+- Azure related permissions should be handled manually by the Azure subscription administrator via Azure portal, different Azure account should at least have contributor role for the subscription so that developers can work together to provision and deploy TeamsFx project
